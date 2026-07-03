@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stivva — site institucional
 
-## Getting Started
+Site one-page da agência de secretárias de IA para WhatsApp.
+**Stack:** Next.js 16 (App Router) + TypeScript + Tailwind CSS 4 + Framer Motion. 100% estático, pronto para a Vercel.
 
-First, run the development server:
+## Rodar localmente
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Trocar textos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Toda a copy do site vive em [`lib/content.ts`](lib/content.ts)** — nome da agência, WhatsApp, planos, FAQ, conversa do mockup, política de privacidade. Nada está hardcoded nos componentes.
 
-## Learn More
+Procure por `[PREENCHER]` nesse arquivo para achar o que falta preencher:
 
-To learn more about Next.js, take a look at the following resources:
+| Campo | Onde |
+| --- | --- |
+| `site.name` | Nome definitivo da agência (logo, títulos, SEO) |
+| `site.domain` | Domínio final (SEO, OpenGraph, sitemap) |
+| `site.whatsappNumber` | Número com DDI+DDD, só dígitos (ex.: `5571999998888`) |
+| `site.instagramHandle` / `site.instagramUrl` | Instagram da agência |
+| `site.email` | E-mail de contato |
+| `site.cnpj` | CNPJ (rodapé) |
+| `pain.cards[*].note` | Estatísticas marcadas como `[dado ilustrativo — validar]` |
+| Seção Demonstração | Placeholder `[VÍDEO DEMO AQUI]` — suba o vídeo e substitua o player em `components/Demo.tsx` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Verificar o build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+## Deploy na Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Suba o projeto para um repositório no GitHub.
+2. Em [vercel.com](https://vercel.com) → **Add New → Project** → importe o repositório. Zero configuração: a Vercel detecta Next.js sozinha.
+3. **Domínio:** registre o `.com.br` no [Registro.br](https://registro.br) (~R$ 40/ano). No painel da Vercel, em *Settings → Domains*, adicione o domínio e aponte o DNS no Registro.br (registro `A` para `76.76.21.21` ou `CNAME` para `cname.vercel-dns.com`).
+4. Atualize `site.domain` em `lib/content.ts` com o domínio final e faça um novo deploy.

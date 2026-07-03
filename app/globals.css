@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #0b0f14;
+  --color-surface: #111826;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-accent: #22c55e;
+  --color-accent-2: #3b82f6;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-padding-top: 5.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #22304a #0b0f14;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: #e7ecf3;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #04130a;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f14;
+}
+::-webkit-scrollbar-thumb {
+  background: #22304a;
+  border-radius: 999px;
+  border: 2px solid #0b0f14;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2d4062;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Cards com borda em gradiente de 1px */
+.gborder {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--gb-fill, #111826), var(--gb-fill, #111826)) padding-box,
+    linear-gradient(150deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04) 35%, rgba(34, 197, 94, 0.16)) border-box;
+}
+
+.gborder-hover {
+  transition: background 0.3s ease;
+}
+.gborder-hover:hover {
+  background:
+    linear-gradient(var(--gb-fill, #111826), var(--gb-fill, #111826)) padding-box,
+    linear-gradient(150deg, rgba(34, 197, 94, 0.5), rgba(255, 255, 255, 0.07) 40%, rgba(59, 130, 246, 0.4)) border-box;
+}
+
+.gborder-strong {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#0f1a2b, #0f1a2b) padding-box,
+    linear-gradient(160deg, rgba(34, 197, 94, 0.65), rgba(34, 197, 94, 0.12) 45%, rgba(59, 130, 246, 0.5)) border-box;
+}
+
+/* Grain sutil por cima de tudo */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Indicador de "digitando..." do chat */
+@keyframes typing-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+.typing-dot {
+  animation: typing-bounce 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typing-dot {
+    animation: none;
+  }
 }
