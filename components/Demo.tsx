@@ -1,4 +1,4 @@
-import { MessageCircle, Play } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { demo, waLink } from "@/lib/content";
 import { Button } from "./ui/Button";
 import { Reveal } from "./ui/Reveal";
@@ -31,22 +31,17 @@ export function Demo() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="gborder relative aspect-video overflow-hidden rounded-2xl">
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-gradient-to-br from-[#101a29] via-[#0c1420] to-[#0e1a17]"
-            />
-            <div
-              aria-hidden
-              className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[80px]"
-            />
-            <div className="relative flex h-full flex-col items-center justify-center gap-4">
-              <div className="flex size-16 items-center justify-center rounded-full bg-accent text-[#05130a] shadow-[0_0_60px_-10px_rgba(34,197,94,0.6)] md:size-20">
-                <Play className="ml-1 size-7 fill-current" aria-hidden />
-              </div>
-              <p className="text-sm font-medium text-white/50">{demo.videoLabel}</p>
-              <p className="text-xs text-white/30">{demo.videoHint}</p>
-            </div>
+          <div className="gborder relative aspect-video overflow-hidden rounded-2xl bg-black">
+            <video
+              className="h-full w-full object-contain"
+              controls
+              playsInline
+              preload="metadata"
+              poster={demo.videoPoster}
+            >
+              <source src={demo.videoSrc} type="video/mp4" />
+              Seu navegador não suporta vídeo. Use Chrome ou Edge.
+            </video>
           </div>
         </Reveal>
       </div>

@@ -162,12 +162,12 @@ export const features = {
 
 export const demo = {
   eyebrow: "Demonstração",
-  title: "Não acredite. Teste.",
-  text: "Mandamos a secretária de IA conversar com você agora — no seu WhatsApp, sobre o seu tipo de negócio. Você faz as perguntas que os seus clientes fariam e vê a resposta chegar em segundos.",
+  title: "Não acredite. Veja.",
+  text: "Demonstração real: WhatsApp, planilha de leads e Google Calendar — tudo automático.",
   cta: "Quero testar no meu WhatsApp",
   ctaMessage: "Olá! Quero testar a secretária de IA no meu WhatsApp",
-  videoLabel: "[VÍDEO DEMO AQUI]",
-  videoHint: "vídeo de 60–90s mostrando uma conversa real",
+  videoSrc: "/demo.mp4",
+  videoPoster: undefined as string | undefined,
 };
 
 export type Plan = {
@@ -190,7 +190,7 @@ export const pricing = {
     {
       name: "Essencial",
       monthly: "R$ 197",
-      installLabel: "instalação única de R$ 1.497",
+      installLabel: "instalação única de R$ 797 · preço de lançamento",
       blurb: "Para quem quer parar de perder cliente por falta de resposta.",
       features: [
         "Secretária de IA no seu WhatsApp",
@@ -207,7 +207,7 @@ export const pricing = {
       name: "Completo",
       badge: "Mais escolhido",
       monthly: "R$ 297",
-      installLabel: "instalação única de R$ 2.497",
+      installLabel: "instalação única de R$ 1.497 · preço de lançamento",
       blurb: "Para quem quer a agenda cheia sem encostar no celular.",
       features: [
         "Tudo do Essencial",
@@ -222,8 +222,8 @@ export const pricing = {
     },
     {
       name: "Premium",
-      monthly: "R$ 497",
-      installLabel: "instalação a partir de R$ 3.497",
+      monthly: "R$ 397",
+      installLabel: "instalação única de R$ 2.497 · preço de lançamento",
       blurb: "Para quem quer visão total do funil e integrações sob medida.",
       features: [
         "Tudo do Completo",
@@ -288,6 +288,10 @@ export const faq = {
     {
       q: "Meus dados e os dos meus clientes ficam seguros?",
       a: "Sim. As conversas são usadas apenas para o seu atendimento, com sigilo e em conformidade com a LGPD, a lei brasileira de proteção de dados. Nada é vendido nem compartilhado, e você pode pedir a exclusão a qualquer momento.",
+    },
+    {
+      q: "Vi app de R$ 197/mês sem taxa de instalação. Por que vocês cobram implantação?",
+      a: "Apps como Atendente24h e BotConversa são ferramentas: você configura, treina e mantém. A Stivva instala, personaliza com os dados do seu negócio, integra agenda e planilha, e dá suporte. A mensalidade é parecida — a diferença é que você contrata o resultado pronto, não a ferramenta.",
     },
     {
       q: "Quanto custa depois da instalação?",
