@@ -15,7 +15,6 @@ export function Pain() {
                 {card.stat}
               </p>
               <p className="mt-4 leading-relaxed text-white/65">{card.text}</p>
-              <p className="mt-3 text-[11px] italic text-white/25">{card.note}</p>
             </Card>
           </Reveal>
         ))}

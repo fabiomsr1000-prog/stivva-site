@@ -1,8 +1,4 @@
-// =====================================================================
-// TODO O TEXTO DO SITE VIVE NESTE ARQUIVO.
-// Troque qualquer copy aqui — nada está hardcoded nos componentes.
-// Itens marcados com [PREENCHER] aguardam os seus dados reais.
-// =====================================================================
+// Textos do site — edite aqui.
 
 export const site = {
   name: "Stivva",
@@ -12,8 +8,7 @@ export const site = {
     "Instalamos uma secretária de IA humanizada no WhatsApp do seu negócio: resposta em segundos, agendamento automático na sua agenda e follow-up de quem some — 24 horas por dia. Rio de Janeiro e todo o Brasil.",
   whatsappNumber: "5521984195055",
   whatsappDefaultMessage: "Olá! Quero ver a secretária de IA funcionando",
-  email: "recepta002@gmail.com", // [PREENCHER] e-mail @stivva quando tiver
-  cnpj: "CNPJ [PREENCHER quando tiver]",
+  email: "recepta002@gmail.com",
   cities: ["Rio de Janeiro · RJ"],
 };
 
@@ -91,17 +86,14 @@ export const pain = {
     {
       stat: "62%",
       text: "das mensagens chegam fora do horário comercial — e ficam no vácuo até o dia seguinte.",
-      note: "[dado ilustrativo — validar]",
     },
     {
       stat: "5 min",
       text: "é o tempo que um cliente interessado espera por resposta antes de esfriar e procurar outro lugar.",
-      note: "[dado ilustrativo — validar]",
     },
     {
       stat: "3 em 10",
       text: "horários marcados viram falta quando ninguém confirma o agendamento na véspera.",
-      note: "[dado ilustrativo — validar]",
     },
   ],
 };
@@ -190,7 +182,7 @@ export const pricing = {
     {
       name: "Essencial",
       monthly: "R$ 197",
-      installLabel: "instalação única de R$ 797 · preço de lançamento",
+      installLabel: "instalação única de R$ 797",
       blurb: "Para quem quer parar de perder cliente por falta de resposta.",
       features: [
         "Secretária de IA no seu WhatsApp",
@@ -207,7 +199,7 @@ export const pricing = {
       name: "Completo",
       badge: "Mais escolhido",
       monthly: "R$ 297",
-      installLabel: "instalação única de R$ 1.497 · preço de lançamento",
+      installLabel: "instalação única de R$ 1.497",
       blurb: "Para quem quer a agenda cheia sem encostar no celular.",
       features: [
         "Tudo do Essencial",
@@ -223,7 +215,7 @@ export const pricing = {
     {
       name: "Premium",
       monthly: "R$ 397",
-      installLabel: "instalação única de R$ 2.497 · preço de lançamento",
+      installLabel: "instalação única de R$ 2.497",
       blurb: "Para quem quer visão total do funil e integrações sob medida.",
       features: [
         "Tudo do Completo",

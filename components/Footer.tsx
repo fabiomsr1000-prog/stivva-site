@@ -38,11 +38,10 @@ export function Footer() {
             </Link>
           </div>
         </div>
-        <div className="mt-12 flex flex-col gap-2 border-t border-white/[0.06] pt-6 text-xs text-white/35 md:flex-row md:justify-between">
+        <div className="mt-12 border-t border-white/[0.06] pt-6 text-xs text-white/35">
           <p>
             © {new Date().getFullYear()} {site.name}. Todos os direitos reservados.
           </p>
-          <p>{site.cnpj}</p>
         </div>
       </div>
     </footer>

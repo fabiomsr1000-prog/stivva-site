@@ -60,7 +60,7 @@ const jsonLd = {
   url: site.domain,
   email: site.email,
   image: `${site.domain}/opengraph-image`,
-  priceRange: "R$197 - R$497 /mês",
+  priceRange: "R$197 - R$397 /mês",
   areaServed: [
     { "@type": "City", name: "Rio de Janeiro" },
     { "@type": "Country", name: "Brasil" },
