@@ -1,0 +1,256 @@
+import type { PanelSnapshot } from "./types";
+
+function isoAt(daysFromNow: number, hour: number, minute = 0): string {
+  const d = new Date();
+  d.setDate(d.getDate() + daysFromNow);
+  d.setHours(hour, minute, 0, 0);
+  return d.toISOString();
+}
+
+function isoPast(hoursAgo: number): string {
+  const d = new Date();
+  d.setHours(d.getHours() - hoursAgo);
+  return d.toISOString();
+}
+
+export const demoSnapshot: PanelSnapshot = {
+  updatedAt: new Date().toISOString(),
+  stats: {
+    conversationsToday: 47,
+    appointmentsToday: 8,
+    appointmentsWeek: 34,
+    conversionRate: 28,
+    avgResponseSec: 6,
+    activeNow: true,
+  },
+  activity: [
+    { label: "Seg", conversations: 32, appointments: 5 },
+    { label: "Ter", conversations: 41, appointments: 7 },
+    { label: "Qua", conversations: 38, appointments: 6 },
+    { label: "Qui", conversations: 52, appointments: 9 },
+    { label: "Sex", conversations: 47, appointments: 8 },
+    { label: "Sáb", conversations: 18, appointments: 3 },
+    { label: "Dom", conversations: 9, appointments: 1 },
+  ],
+  config: {
+    name: "Clínica Aura",
+    assistantName: "Bia",
+    tone: "Acolhedora, profissional e objetiva. Usa emojis com moderação.",
+    whatsappNumber: "5521984195055",
+    rules: [
+      "Não agenda aos domingos",
+      "Pedir nome completo antes de confirmar",
+      "Confirmar serviço e duração antes de fechar horário",
+      "Encaminhar urgências médicas para atendimento humano",
+    ],
+    services: [
+      { id: "s1", name: "Limpeza de pele profunda", price: 180, durationMin: 60, active: true },
+      { id: "s2", name: "Botox facial", price: 890, durationMin: 45, active: true },
+      { id: "s3", name: "Harmonização facial", price: 1200, durationMin: 90, active: true },
+      { id: "s4", name: "Consulta avaliação", price: 150, durationMin: 30, active: true },
+      { id: "s5", name: "Peeling químico", price: 320, durationMin: 50, active: false },
+    ],
+    hours: [
+      { day: "Segunda", dayIndex: 1, open: "08:00", close: "19:00", enabled: true },
+      { day: "Terça", dayIndex: 2, open: "08:00", close: "19:00", enabled: true },
+      { day: "Quarta", dayIndex: 3, open: "08:00", close: "19:00", enabled: true },
+      { day: "Quinta", dayIndex: 4, open: "08:00", close: "19:00", enabled: true },
+      { day: "Sexta", dayIndex: 5, open: "08:00", close: "18:00", enabled: true },
+      { day: "Sábado", dayIndex: 6, open: "09:00", close: "14:00", enabled: true },
+      { day: "Domingo", dayIndex: 0, open: "00:00", close: "00:00", enabled: false },
+    ],
+  },
+  appointments: [
+    {
+      id: "a1",
+      patientName: "Maria Silva",
+      patientPhone: "557187518670",
+      service: "Limpeza de pele profunda",
+      serviceId: "s1",
+      professional: "Dra. Ana",
+      start: isoAt(0, 9, 0),
+      end: isoAt(0, 10, 0),
+      status: "confirmado",
+      source: "ia",
+    },
+    {
+      id: "a2",
+      patientName: "Juliana Costa",
+      patientPhone: "552199887766",
+      service: "Botox facial",
+      serviceId: "s2",
+      professional: "Dra. Ana",
+      start: isoAt(0, 11, 0),
+      end: isoAt(0, 11, 45),
+      status: "confirmado",
+      source: "ia",
+    },
+    {
+      id: "a3",
+      patientName: "Fernanda Lima",
+      patientPhone: "552198112233",
+      service: "Consulta avaliação",
+      serviceId: "s4",
+      professional: "Dra. Carla",
+      start: isoAt(0, 14, 30),
+      end: isoAt(0, 15, 0),
+      status: "pendente",
+      source: "manual",
+    },
+    {
+      id: "a4",
+      patientName: "Patrícia Souza",
+      patientPhone: "552197654321",
+      service: "Harmonização facial",
+      serviceId: "s3",
+      professional: "Dra. Ana",
+      start: isoAt(1, 10, 0),
+      end: isoAt(1, 11, 30),
+      status: "confirmado",
+      source: "ia",
+    },
+    {
+      id: "a5",
+      patientName: "Camila Rocha",
+      patientPhone: "552196543210",
+      service: "Limpeza de pele profunda",
+      serviceId: "s1",
+      professional: "Dra. Carla",
+      start: isoAt(1, 15, 0),
+      end: isoAt(1, 16, 0),
+      status: "confirmado",
+      source: "ia",
+    },
+    {
+      id: "a6",
+      patientName: "Beatriz Alves",
+      patientPhone: "552195432109",
+      service: "Botox facial",
+      serviceId: "s2",
+      professional: "Dra. Ana",
+      start: isoAt(2, 9, 30),
+      end: isoAt(2, 10, 15),
+      status: "pendente",
+      source: "ia",
+    },
+    {
+      id: "a7",
+      patientName: "Larissa Mendes",
+      patientPhone: "552194321098",
+      service: "Consulta avaliação",
+      serviceId: "s4",
+      professional: "Dra. Carla",
+      start: isoAt(-1, 16, 0),
+      end: isoAt(-1, 16, 30),
+      status: "concluido",
+      source: "ia",
+    },
+  ],
+  conversations: [
+    {
+      id: "c1",
+      contactName: "Maria Silva",
+      contactPhone: "557187518670",
+      stage: "agendou",
+      lastMessage: "Perfeito, obrigada! Até segunda 💚",
+      lastMessageAt: isoPast(0.5),
+      unread: 0,
+      booked: true,
+      messages: [
+        { id: "m1", from: "client", text: "Oi! Quanto custa a limpeza de pele?", at: isoPast(2) },
+        {
+          id: "m2",
+          from: "ai",
+          text: "Olá! A limpeza de pele profunda custa R$180 e dura cerca de 1h. Quer agendar um horário?",
+          at: isoPast(1.95),
+        },
+        { id: "m3", from: "client", text: "Quero sim, segunda que vem às 11h", at: isoPast(1.5) },
+        { id: "m4", from: "ai", text: "Ótimo! Qual seu nome completo para confirmar?", at: isoPast(1.45) },
+        { id: "m5", from: "client", text: "Maria Silva", at: isoPast(1) },
+        {
+          id: "m6",
+          from: "ai",
+          text: "Agendado! Limpeza de pele — segunda às 11h com a Dra. Ana. Te esperamos na Clínica Aura ✨",
+          at: isoPast(0.8),
+        },
+        { id: "m7", from: "client", text: "Perfeito, obrigada! Até segunda 💚", at: isoPast(0.5) },
+      ],
+    },
+    {
+      id: "c2",
+      contactName: "Ricardo M.",
+      contactPhone: "552191234567",
+      stage: "perguntou_preco",
+      lastMessage: "E o botox, qual o valor?",
+      lastMessageAt: isoPast(0.2),
+      unread: 1,
+      booked: false,
+      messages: [
+        { id: "m8", from: "client", text: "Boa tarde, vocês fazem botox?", at: isoPast(0.4) },
+        {
+          id: "m9",
+          from: "ai",
+          text: "Fazemos sim! O botox facial custa R$890. Posso te ajudar a agendar uma avaliação?",
+          at: isoPast(0.35),
+        },
+        { id: "m10", from: "client", text: "E o botox, qual o valor?", at: isoPast(0.2) },
+      ],
+    },
+    {
+      id: "c3",
+      contactName: "Amanda Freitas",
+      contactPhone: "552198765432",
+      stage: "quer_agendar",
+      lastMessage: "Tem horário amanhã de tarde?",
+      lastMessageAt: isoPast(1),
+      unread: 2,
+      booked: false,
+      messages: [
+        { id: "m11", from: "client", text: "Oi Bia!", at: isoPast(1.5) },
+        { id: "m12", from: "ai", text: "Olá, Amanda! Como posso ajudar?", at: isoPast(1.4) },
+        { id: "m13", from: "client", text: "Tem horário amanhã de tarde?", at: isoPast(1) },
+      ],
+    },
+    {
+      id: "c4",
+      contactName: "Cliente",
+      contactPhone: "552197111222",
+      stage: "sumiu",
+      lastMessage: "Vou pensar e te aviso",
+      lastMessageAt: isoPast(48),
+      unread: 0,
+      booked: false,
+      messages: [
+        { id: "m14", from: "client", text: "Quanto é a harmonização?", at: isoPast(50) },
+        {
+          id: "m15",
+          from: "ai",
+          text: "A harmonização facial começa em R$1.200. Quer que eu reserve um horário de avaliação?",
+          at: isoPast(49),
+        },
+        { id: "m16", from: "client", text: "Vou pensar e te aviso", at: isoPast(48) },
+      ],
+    },
+    {
+      id: "c5",
+      contactName: "Patrícia Souza",
+      contactPhone: "552197654321",
+      stage: "agendou",
+      lastMessage: "Confirmado então, obrigada!",
+      lastMessageAt: isoPast(5),
+      unread: 0,
+      booked: true,
+      messages: [
+        { id: "m17", from: "client", text: "Quero agendar harmonização", at: isoPast(6) },
+        { id: "m18", from: "ai", text: "Claro! Qual dia e horário prefere?", at: isoPast(5.8) },
+        { id: "m19", from: "client", text: "Amanhã às 10h", at: isoPast(5.5) },
+        { id: "m20", from: "ai", text: "Perfeito, Patrícia! Amanhã às 10h com a Dra. Ana.", at: isoPast(5.2) },
+        { id: "m21", from: "client", text: "Confirmado então, obrigada!", at: isoPast(5) },
+      ],
+    },
+  ],
+};
+
+export function getDemoSnapshot(): PanelSnapshot {
+  return structuredClone(demoSnapshot);
+}
